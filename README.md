@@ -24,7 +24,7 @@ This repository contains the necessary tools to synthesize speech for Basque (eu
     - pep  
     - pol  
 * Spanish [es]:
-    - laura
+    - [laura](https://huggingface.co/HiTZ/TTS-es_laura)  
     - alejandro  
 
 ## Uses  
