@@ -26,7 +26,7 @@ This repository contains the necessary tools to synthesize speech for Basque (eu
     - pol  
 * Spanish [es]:
     - [laura](https://huggingface.co/HiTZ/TTS-es_laura)  
-    - alejandro  
+    - [alejandro](https://huggingface.co/HiTZ/TTS-es_alejandro)  
 
 ## Uses  
 This models are intented to be used for speech synthesis in Basque, Galician, Catalan and Spanish.  
