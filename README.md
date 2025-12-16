@@ -17,19 +17,12 @@ This repository contains the necessary tools to synthesize speech for Basque (eu
 * Catalan [ca]:  
     - [pau](https://huggingface.co/HiTZ/TTS-ca_pau)  
     - [ona](https://huggingface.co/HiTZ/TTS-ca_ona)  
-    - bet  
-    - eli  
-    - eva  
-    - jan  
-    - mar  
-    - pep  
-    - pol  
 * Spanish [es]:
     - [laura](https://huggingface.co/HiTZ/TTS-es_laura)  
     - [alejandro](https://huggingface.co/HiTZ/TTS-es_alejandro)  
 
 ## Uses  
-This models are intented to be used for speech synthesis in Basque, Galician, Catalan and Spanish.  
+These models are intented to be used for speech synthesis in Basque, Galician, Catalan and Spanish.  
 ## Installation  
 You will need to install huggingface_hub package with the following command.  
 ```bash
