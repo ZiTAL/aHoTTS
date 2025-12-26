@@ -78,4 +78,4 @@ Ibon Saratxaga: ibon.saratxaga@ehu.eus
 ### Funding
 Catalan and Galician have been funded by the project with reference numbers 2022/TL22/00215337, 2022/TL22/00215336, 2022/TL22/00215335, and 2022/TL22/00215334 is funded by the Ministry of Digital Transformation and by the Recovery, Transformation and Resilience Plan – Funded by the European Union – NextGenerationEU.
 ### Citation information  
-Hernaez, I., Navas, E., Murugarren, J.L., Etxebarria, B. (2001) Description of the AhoTTS system for the Basque language. Proc. 4th ISCA ITRW on Speech Synthesis (SSW 4), paper 202
+García, V., Hernáez, I., & Navas, E. (2022). Evaluation of Tacotron Based Synthesizers for Spanish and Basque. Applied Sciences, 12(3), 1686. https://doi.org/10.3390/app12031686
