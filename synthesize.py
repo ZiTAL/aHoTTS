@@ -5,12 +5,15 @@ import shlex
 import shutil
 import sys
 import tempfile
+import re
 from huggingface_hub import hf_hub_download
 
 def synthesize(text, language, model, output=None):
     use_tmp = False
     if output:
-        out_path = f"./output/{output}.wav"
+        if re.search(r"\.wav", output, re.IGNORECASE) is None:
+            output += ".wav"
+        out_path = output
     else:
         tmp = tempfile.NamedTemporaryFile(suffix=".wav", delete=False)
         out_path = tmp.name
