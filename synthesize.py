@@ -1,12 +1,15 @@
+import os
+import sys
 import argparse
 import subprocess
-import os
 import shlex
 import shutil
-import sys
 import tempfile
 import re
 from huggingface_hub import hf_hub_download
+
+script_file = os.path.abspath(__file__)
+script_dir  = os.path.dirname(script_file)
 
 def synthesize(text, language, model, output=None):
     use_tmp = False
@@ -22,13 +25,13 @@ def synthesize(text, language, model, output=None):
 
     quoted = shlex.quote(text)
     if(language=='eu'):
-        script = f"echo {quoted} | iconv -f UTF-8 -t ISO-8859-1 | ./ahotts/tts -Lang={language} -Method=Vits -HDic=./ahotts/dicts/{language}/eu_dicc -voice_path=./ahotts/voices/{language}/{model} {out_path}"
+        script = f"echo {quoted} | iconv -f UTF-8 -t ISO-8859-1 | {script_dir}/ahotts/tts -Lang={language} -Method=Vits -HDic={script_dir}/ahotts/dicts/{language}/eu_dicc -voice_path={script_dir}/ahotts/voices/{language}/{model} {out_path}"
     elif(language=='gl'):
-        script = f"echo {quoted} | ./ahotts/tts -Lang={language} -Method=Vits -HDicDB=./ahotts/dicts/{language}/cotovia -voice_path=./ahotts/voices/{language}/{model} {out_path}"
+        script = f"echo {quoted} | {script_dir}/ahotts/tts -Lang={language} -Method=Vits -HDicDB={script_dir}/ahotts/dicts/{language}/cotovia -voice_path={script_dir}/ahotts/voices/{language}/{model} {out_path}"
     elif(language=='ca'):
-        script = f"echo {quoted} | ./ahotts/tts -Lang={language} -Method=Vits -HDic=./ahotts/dicts/{language}/espeak-ng-data -voice_path=./ahotts/voices/{language}/{model} {out_path}"
+        script = f"echo {quoted} | {script_dir}/ahotts/tts -Lang={language} -Method=Vits -HDic={script_dir}/ahotts/dicts/{language}/espeak-ng-data -voice_path={script_dir}/ahotts/voices/{language}/{model} {out_path}"
     elif(language=='es'):
-        script = f"echo {quoted} | iconv -f UTF-8 -t ISO-8859-1 | ./ahotts/tts -Lang={language} -Method=Vits -HDic=./ahotts/dicts/{language}/es_dicc -voice_path=./ahotts/voices/{language}/{model} {out_path}"
+        script = f"echo {quoted} | iconv -f UTF-8 -t ISO-8859-1 | {script_dir}/ahotts/tts -Lang={language} -Method=Vits -HDic={script_dir}/ahotts/dicts/{language}/es_dicc -voice_path={script_dir}/ahotts/voices/{language}/{model} {out_path}"
 
     subprocess.run(script, shell=True, stderr=subprocess.DEVNULL if use_tmp else None)
 
@@ -37,7 +40,7 @@ def synthesize(text, language, model, output=None):
             sys.stdout.buffer.write(f.read())
         os.unlink(out_path)
     else:
-        print("Synthesis completed. Output file:", "./output/" + output + ".wav", file=sys.stderr)
+        print(f"Synthesis completed. Output file: {out_path}", file=sys.stderr)
 
 def getArgs():
     parser = argparse.ArgumentParser()
@@ -56,7 +59,7 @@ if __name__ == "__main__":
 
     parser, args = getArgs()
 
-    model_dir = f"./ahotts/voices/{args.language}/{args.model}"
+    model_dir = f"{script_dir}/ahotts/voices/{args.language}/{args.model}"
     repo_id   = f"HiTZ/TTS-{args.language}_{args.model}"
     filename  = "vits.onnx"
 
